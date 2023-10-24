@@ -135,7 +135,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://twilio-gladia-service.vercel.app/",
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
