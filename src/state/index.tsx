@@ -98,8 +98,9 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*',
           },
+          mode: 'cors',
           body: JSON.stringify({
             user_identity,
             room_name,
@@ -115,6 +116,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
           },
+          mode: 'cors',
           body: JSON.stringify({ room_sid, rules }),
           method: 'POST',
         })

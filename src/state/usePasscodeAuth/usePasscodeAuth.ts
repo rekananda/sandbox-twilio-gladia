@@ -22,6 +22,7 @@ export function fetchToken(
       'content-type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     },
+    mode: 'cors',
     body: JSON.stringify({
       user_identity: name,
       room_name: room,

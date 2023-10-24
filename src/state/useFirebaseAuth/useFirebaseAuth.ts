@@ -28,6 +28,7 @@ export default function useFirebaseAuth() {
       return fetch(endpoint, {
         method: 'POST',
         headers,
+        mode: 'cors',
         body: JSON.stringify({
           user_identity,
           room_name,
