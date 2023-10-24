@@ -20,6 +20,7 @@ export function fetchToken(
     method: 'POST',
     headers: {
       'content-type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({
       user_identity: name,
