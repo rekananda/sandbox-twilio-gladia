@@ -92,15 +92,13 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     contextValue = {
       ...contextValue,
       getToken: async (user_identity, room_name) => {
-        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT ? `${process.env.REACT_APP_TOKEN_ENDPOINT}/token` : '/token';
+        const endpoint = `${process.env.REACT_APP_TOKEN_ENDPOINT||''}/token`;
 
         return fetch(endpoint, {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
           },
-          mode: 'cors',
           body: JSON.stringify({
             user_identity,
             room_name,
@@ -109,14 +107,12 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
         }).then(res => res.json());
       },
       updateRecordingRules: async (room_sid, rules) => {
-        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT ? `${process.env.REACT_APP_TOKEN_ENDPOINT}/recordingrules` : '/recordingrules';
+        const endpoint = `${process.env.REACT_APP_TOKEN_ENDPOINT||''}/recordingrules`;
 
         return fetch(endpoint, {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
           },
-          mode: 'cors',
           body: JSON.stringify({ room_sid, rules }),
           method: 'POST',
         })

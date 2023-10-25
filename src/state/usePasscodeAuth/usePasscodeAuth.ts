@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT ? `${process.env.REACT_APP_TOKEN_ENDPOINT}/token` : '/token';
+const endpoint = `${process.env.REACT_APP_TOKEN_ENDPOINT||''}/token`;
 
 export function getPasscode() {
   const match = window.location.search.match(/passcode=(.*)&?/);
@@ -20,9 +20,7 @@ export function fetchToken(
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
     },
-    mode: 'cors',
     body: JSON.stringify({
       user_identity: name,
       room_name: room,

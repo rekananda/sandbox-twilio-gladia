@@ -21,14 +21,12 @@ export default function useFirebaseAuth() {
       const idToken = await user!.getIdToken();
       headers.set('Authorization', idToken);
       headers.set('content-type', 'application/json');
-      headers.set('Access-Control-Allow-Origin', '*');
 
-      const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT ? `${process.env.REACT_APP_TOKEN_ENDPOINT}/token` : '/token';
+      const endpoint = `${process.env.REACT_APP_TOKEN_ENDPOINT||''}/token`;
 
       return fetch(endpoint, {
         method: 'POST',
         headers,
-        mode: 'cors',
         body: JSON.stringify({
           user_identity,
           room_name,

@@ -99,7 +99,7 @@
     "test:ci": "cross-env TZ=utc jest --config jest.config.js --ci --runInBand --reporters=default --reporters=jest-junit --coverage --silent",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --browser chrome",
-    "cypress:ci": "cross-env CYPRESS_baseUrl=https://twilio-gladia-service.vercel.app start-server-and-test server https://twilio-gladia-service.vercel.app cypress:run",
+    "cypress:ci": "cross-env CYPRESS_baseUrl=http://localhost:8081 start-server-and-test server http://localhost:8081 cypress:run",
     "deploy:twilio-cli": "cross-env REACT_APP_SET_AUTH=passcode npm run build && twilio rtc:apps:video:deploy --authentication=passcode --app-directory ./build",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -135,6 +135,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://twilio-gladia-service.vercel.app/",
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
